@@ -10,7 +10,9 @@ import 'package:demo_bottomtab_tabbar/constants/text_string.dart';
 import 'edit_profile.dart';
 
 class ProfileTab extends StatelessWidget {
-  const ProfileTab({super.key});
+  ProfileTab({super.key});
+
+  final user = Get.arguments;
 
   @override
   Widget build(BuildContext context) {
@@ -30,9 +32,7 @@ class ProfileTab extends StatelessWidget {
                     height: 120,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(100),
-                      child: Image.network(
-                        'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg',
-                      ),
+                      child: Image.network('${user['picture']['large']}'),
                     ),
                   ),
                   Positioned(
@@ -55,11 +55,11 @@ class ProfileTab extends StatelessWidget {
                 ],
               ),
               Text(
-                "Dao Van Trieu",
+                '${user['name']['first']} ${user['name']['last']}',
                 style: Theme.of(context).textTheme.headlineSmall,
               ),
               Text(
-                "trieudv@deha-soft.com",
+                '${user['email']}',
                 style: Theme.of(context).textTheme.bodySmall,
               ),
               const SizedBox(height: 20),
@@ -67,7 +67,7 @@ class ProfileTab extends StatelessWidget {
                 width: 200,
                 child: ElevatedButton(
                   onPressed: () {
-                    Get.to(() => EditProfileScreen());
+                    Get.to(() => EditProfileScreen(), arguments: user);
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,

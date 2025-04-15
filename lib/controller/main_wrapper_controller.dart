@@ -25,7 +25,7 @@ class MainWrapperController extends GetxController {
   }
 
   @override
-  void onInit() {
+  Future<void> onInit() async {
     pageController = PageController(initialPage: 0);
     fetchUsers();
     super.onInit();

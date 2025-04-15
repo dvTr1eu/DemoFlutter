@@ -1,3 +1,4 @@
+import 'package:demo_bottomtab_tabbar/view/profile/profile_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
@@ -109,6 +110,7 @@ class _HomeTabState extends State<HomeTab> {
                                 elevation: 4,
                                 margin: const EdgeInsets.symmetric(vertical: 8),
                                 child: ListTile(
+                                  onTap: () => Get.to(() => ProfileTab(), arguments: user),
                                   leading: CircleAvatar(
                                     backgroundImage: NetworkImage(imageUrl),
                                   ),
